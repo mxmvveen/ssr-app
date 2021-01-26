@@ -1,7 +1,6 @@
 import React from 'react';
-import './App.css';
 
-const App = () => {
+const Home = () => {
   const [inputName, setInputName] = React.useState<string>('');
   const [names, setNames] = React.useState<string[]>([]);
 
@@ -37,5 +36,4 @@ const App = () => {
     </div>
   );
 }
-
-export default App;
+export default Home;
