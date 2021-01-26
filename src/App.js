@@ -2,20 +2,20 @@ import React from 'react';
 import './App.css';
 
 const App = () => {
-  const [inputName, setInputName] = React.useState<string>('');
-  const [names, setNames] = React.useState<string[]>([]);
+  const [inputName, setInputName] = React.useState('');
+  const [names, setNames] = React.useState([]);
 
-  const onInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    const value: string = event.target.value;
+  const onInputChange = (event) => {
+    const value = event.target.value;
     setInputName(value);
   };
 
-  const onAddName = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
+  const onAddName = (event) => {
     if (inputName === undefined) {
       return;
     }
 
-    const uniqueNames: Set<string> = new Set([...names, inputName]);
+    const uniqueNames = new Set([...names, inputName]);
 
     setNames(Array.from(uniqueNames));
     setInputName('');
