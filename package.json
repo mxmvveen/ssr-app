@@ -26,7 +26,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "ssr": "node server/index.js"
+    "ssr": "node server/index.js",
+    "ssrText": "webpack --env.platform=server webpack --env.platform=web"
   },
   "eslintConfig": {
     "extends": [
