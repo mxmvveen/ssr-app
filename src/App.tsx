@@ -1,24 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [inputName, setInputName] = React.useState<string>('');
+  const [names, setNames] = React.useState<string[]>([]);
+
+  const onInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const value: string = event.target.value;
+    setInputName(value);
+  };
+
+  const onAddName = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
+    if (inputName === undefined) {
+      return;
+    }
+
+    const uniqueNames: Set<string> = new Set([...names, inputName]);
+
+    setNames(Array.from(uniqueNames));
+    setInputName('');
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <input value={inputName} onChange={onInputChange} />
+    <button onClick={onAddName}>Add name</button>
+
+      <ul>
+      {names.map(name => (
+        <li>
+          {name}
+        </li>
+      ))}
+      </ul>
     </div>
   );
 }
